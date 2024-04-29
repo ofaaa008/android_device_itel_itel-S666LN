@@ -10,6 +10,11 @@ DEVICE_PATH := device/itel/S666LN
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# Relax ELF prebuilts in PRODUCT_COPY_FILES rule
+# https://android.googlesource.com/platform/build/+/refs/heads/main/Changes.md#elf-prebuilts-in-build_broken_elf_prebuilt_product_copy_files
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
+
 # A/B
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
@@ -112,7 +117,7 @@ TW_CUSTOM_CLOCK_POS := 40
 TW_CUSTOM_CPU_POS := 290
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone28/temp
 TW_DEFAULT_BRIGHTNESS := 2047
-TW_DEVICE_VERSION := ${shell git -C $(DEVICE_PATH) rev-parse --short HEAD}-Shivelight
+TW_DEVICE_VERSION := ${shell git -C $(DEVICE_PATH) rev-parse --short HEAD}-ErickShelby
 TW_EXCLUDE_APEX := true
 TW_EXTRA_LANGUAGES := true
 TW_HAS_NO_RECOVERY_PARTITION := true
@@ -122,7 +127,6 @@ TW_NO_FLASH_CURRENT_TWRP := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_THEME := portrait_hdpi
 TW_USE_TOOLBOX := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
 TARGET_USES_MKE2FS := true
 TW_FRAMERATE := 60
 
