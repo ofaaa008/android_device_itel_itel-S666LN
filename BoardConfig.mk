@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/itel/itel-S666LN
+DEVICE_PATH := device/itel/S666LN
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -108,9 +108,32 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
 # TWRP Configuration
-TW_THEME := portrait_hdpi
+TW_CUSTOM_CLOCK_POS := 40
+TW_CUSTOM_CPU_POS := 290
+TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone28/temp
+TW_DEFAULT_BRIGHTNESS := 2047
+TW_DEVICE_VERSION := ${shell git -C $(DEVICE_PATH) rev-parse --short HEAD}-Shivelight
+TW_EXCLUDE_APEX := true
 TW_EXTRA_LANGUAGES := true
-TW_SCREEN_BLANK_ON_BOOT := true
+TW_HAS_NO_RECOVERY_PARTITION := true
+TW_INCLUDE_FASTBOOTD := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_NO_FLASH_CURRENT_TWRP := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_THEME := portrait_hdpi
 TW_USE_TOOLBOX := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
+TARGET_USES_MKE2FS := true
+TW_FRAMERATE := 60
+
+# Tools
+TW_INCLUDE_FUSE_EXFAT := true
+TW_INCLUDE_LIBRESETPROP := true
+TW_INCLUDE_NTFS_3G := true
 TW_INCLUDE_REPACKTOOLS := true
+TW_INCLUDE_RESETPROP := true
+TW_INCLUDE_LPTOOLS := true
+
+# Debug
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
